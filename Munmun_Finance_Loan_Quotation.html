@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Munmun Finance | Loan Quotation</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#eef3fb,#f8fafc);color:#172033}
+.wrap{max-width:980px;margin:25px auto;padding:15px}
+.card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 12px 40px rgba(16,40,80,.14)}
+.header{background:linear-gradient(135deg,#08265f,#1554ad);color:#fff;text-align:center;padding:30px 20px}
+.header h1{margin:0;font-size:34px;letter-spacing:1px}.powered{margin-top:5px;font-size:16px;font-weight:600}.tag{margin-top:10px;font-size:14px;opacity:.92}
+.info{padding:20px 28px;background:#f7f9fd;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center}
+.info div{background:#fff;padding:14px;border-radius:12px;border:1px solid #e5e9f2}.info b{display:block;font-size:13px;color:#667085;margin-bottom:5px}.info span{font-size:15px;font-weight:700}
+.form{padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:block;font-weight:700;margin-bottom:8px}input,select{width:100%;padding:13px;border:1px solid #ccd3df;border-radius:10px;font-size:15px;background:#fff}
+.full{grid-column:1/-1}.primary,.action{width:100%;border:0;padding:15px;border-radius:11px;background:#1554ad;color:#fff;font-size:16px;font-weight:700;cursor:pointer}.primary:hover,.action:hover{background:#08265f}
+.section{margin:0 28px 22px;padding:22px;border-radius:16px;background:#f7f9fd;border:1px solid #e5e9f2}
+.section h2{text-align:center;margin:0 0 18px;font-size:21px}
+.table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}.table th,.table td{padding:12px;border-bottom:1px solid #e8ebf2;text-align:left}.table th:last-child,.table td:last-child{text-align:right}.table th{background:#eef4ff}
+.total td{font-weight:800;font-size:17px}.net{margin-top:15px;background:#fff;padding:18px;border-radius:12px;text-align:center;border:1px solid #dce5f5}.net small{display:block;color:#667085}.net strong{font-size:28px}
+.results{display:none}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.box{background:#fff;border-radius:12px;padding:16px;text-align:center}.box span{display:block;color:#667085;font-size:13px;margin-bottom:7px}.box strong{font-size:20px}
+.notes{font-size:12px;color:#667085;line-height:1.6}.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.whatsapp{background:#168c4a}.whatsapp:hover{background:#0e713b}
+.footer{padding:0 28px 28px;text-align:center}.footer h3{margin:4px 0 10px}.contacts{line-height:1.8;font-size:14px}.disclaimer{font-size:11px;color:#667085;margin-top:15px;line-height:1.5}
+@media(max-width:700px){.info,.grid,.actions{grid-template-columns:1fr}.form{grid-template-columns:1fr}.full{grid-column:auto}.header h1{font-size:28px}}
+@media print{body{background:#fff}.wrap{margin:0;max-width:none;padding:0}.card{box-shadow:none}.no-print{display:none!important}.section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<section class="header">
+<h1>MUNMUN FINANCE</h1><div class="powered">Powered by Yash Sahu</div>
+<div class="tag">All Types of Loans Available • PAN India Service</div>
+</section>
+
+<section class="info">
+<div><b>FOUNDER</b><span>YASH SAHU</span></div>
+<div><b>NETWORK</b><span>150+ NBFC &amp; BANKS TIE-UP</span></div>
+<div><b>ROI STARTING FROM</b><span>7.15%*</span></div>
+</section>
+
+<section class="form no-print">
+<div><label>Customer Name</label><input id="name" placeholder="Enter customer name"></div>
+<div><label>Mobile Number</label><input id="mobile" type="tel" placeholder="Enter mobile number"></div>
+<div><label>Loan Type</label><select id="loanType"><option>Home Loan</option><option>Loan Against Property (LAP)</option><option>Business Loan</option><option>Personal Loan</option><option>Vehicle Loan</option><option>Education Loan</option><option>Project Funding</option><option>CC Limit</option></select></div>
+<div><label>Loan Amount (₹)</label><input id="amount" type="number" value="1000000" min="1"></div>
+<div><label>Interest Rate (% p.a.)</label><input id="rate" type="number" value="7.15" min="0" step="0.01"></div>
+<div><label>Loan Tenure (Years)</label><input id="years" type="number" value="10" min="1" step="1"></div>
+
+<div><label>Login / Processing Fee (₹)</label><input id="loginFee" type="number" value="0" min="0"></div>
+<div><label>Insurance (₹)</label><input id="insurance" type="number" value="0" min="0"></div>
+<div><label>PF / Other Lender Charges (₹)</label><input id="pf" type="number" value="0" min="0"></div>
+<div><label>Legal Charges (₹)</label><input id="legal" type="number" value="0" min="0"></div>
+<div><label>Technical Charges (₹)</label><input id="technical" type="number" value="0" min="0"></div>
+<div><label>Stamp / Documentation (₹)</label><input id="stamp" type="number" value="0" min="0"></div>
+<div><label>Other Charges (₹)</label><input id="other" type="number" value="0" min="0"></div>
+<div><label>Munmun Finance Consultancy Fee (₹)</label><input id="serviceFee" type="number" value="0" min="0"></div>
+<div class="full"><button class="primary" onclick="generate()">Generate Quotation</button></div>
+</section>
+
+<section id="quotation" class="section results">
+<h2>LOAN QUOTATION</h2>
+<table class="table">
+<tr><th>Customer Name</th><td id="qName">-</td></tr>
+<tr><th>Mobile Number</th><td id="qMobile">-</td></tr>
+<tr><th>Loan Type</th><td id="qType">-</td></tr>
+<tr><th>Loan Amount</th><td id="qAmount">-</td></tr>
+<tr><th>Interest Rate</th><td id="qRate">-</td></tr>
+<tr><th>Tenure</th><td id="qYears">-</td></tr>
+</table>
+</section>
+
+<section id="costSection" class="section results">
+<h2>LOAN COST BREAK-UP</h2>
+<table class="table">
+<thead><tr><th>Particulars</th><th>Estimated Amount</th></tr></thead>
+<tbody>
+<tr><td>Login / Processing Fee</td><td id="cLogin">₹0</td></tr>
+<tr><td>Insurance</td><td id="cInsurance">₹0</td></tr>
+<tr><td>PF / Other Lender Charges</td><td id="cPf">₹0</td></tr>
+<tr><td>Legal Charges</td><td id="cLegal">₹0</td></tr>
+<tr><td>Technical Charges</td><td id="cTechnical">₹0</td></tr>
+<tr><td>Stamp / Documentation</td><td id="cStamp">₹0</td></tr>
+<tr><td>Other Charges</td><td id="cOther">₹0</td></tr>
+<tr><td>Munmun Finance Consultancy Fee</td><td id="cService">₹0</td></tr>
+<tr class="total"><td>TOTAL ESTIMATED CHARGES</td><td id="cTotal">₹0</td></tr>
+</tbody>
+</table>
+<div class="net"><small>ESTIMATED NET DISBURSEMENT</small><strong id="net">₹0</strong></div>
+</section>
+
+<section id="emiSection" class="section results">
+<h2>EMI SUMMARY</h2>
+<div class="grid">
+<div class="box"><span>Monthly EMI</span><strong id="emi">₹0</strong></div>
+<div class="box"><span>Total Interest</span><strong id="interest">₹0</strong></div>
+<div class="box"><span>Total Payment</span><strong id="total">₹0</strong></div>
+</div>
+</section>
+
+<section id="notesSection" class="section results">
+<h2>IMPORTANT NOTES</h2>
+<div class="notes">
+• All charges shown are estimated and subject to applicable lender policy.<br>
+• Insurance premium and lender charges may vary according to customer profile and final sanction terms.<br>
+• Legal, technical, stamp/documentation and other charges may vary by lender and transaction.<br>
+• Final loan amount, ROI, EMI and charges will be as per the lender's final sanction/approval.<br>
+• Munmun Finance Consultancy Fee is shown separately from lender charges.
+</div>
+</section>
+
+<section id="buttons" class="section no-print results">
+<div class="actions">
+<button class="action" onclick="window.print()">Print / Save PDF</button>
+<button class="action whatsapp" onclick="sendWhatsApp()">Send to Munmun Finance WhatsApp</button>
+<button class="action" onclick="sendCustomerWhatsApp()">WhatsApp Customer</button>
+</div>
+</section>
+
+<section class="footer">
+<h3>Contact Munmun Finance</h3>
+<div class="contacts">
+📱 <b>Mobile / WhatsApp:</b> 9522501269 / 9343551379<br>
+📧 <b>Email:</b> munmunfinance285@gmail.com • sahuyash285@gmail.com<br>
+📸 <b>Instagram:</b> @munmun_finance
+</div>
+<div class="disclaimer">
+*ROI starting from 7.15% is indicative and subject to lender eligibility, credit profile, applicable policies, fees and final approval. EMI shown is an estimate.
+</div>
+</section>
+</div></div>
+
+<script>
+const fmt=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:0}).format(Number(n)||0);
+const val=id=>Number(document.getElementById(id).value)||0;
+
+function generate(){
+ const name=document.getElementById('name').value.trim();
+ const mobile=document.getElementById('mobile').value.trim();
+ const type=document.getElementById('loanType').value;
+ const P=val('amount'), annual=val('rate'), years=val('years');
+ if(!name || P<=0 || annual<0 || years<=0){alert('Please enter Customer Name, Loan Amount, ROI and Tenure.');return;}
+ const charges=['loginFee','insurance','pf','legal','technical','stamp','other','serviceFee'].reduce((s,id)=>s+val(id),0);
+ const r=annual/12/100,n=years*12;
+ const emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+ const total=emi*n, interest=total-P, net=Math.max(0,P-charges);
+
+ document.getElementById('qName').textContent=name;
+ document.getElementById('qMobile').textContent=mobile||'-';
+ document.getElementById('qType').textContent=type;
+ document.getElementById('qAmount').textContent=fmt(P);
+ document.getElementById('qRate').textContent=annual.toFixed(2)+'% p.a.';
+ document.getElementById('qYears').textContent=years+' Years';
+
+ const map={loginFee:'cLogin',insurance:'cInsurance',pf:'cPf',legal:'cLegal',technical:'cTechnical',stamp:'cStamp',other:'cOther',serviceFee:'cService'};
+ for(const id in map) document.getElementById(map[id]).textContent=fmt(val(id));
+ document.getElementById('cTotal').textContent=fmt(charges);
+ document.getElementById('net').textContent=fmt(net);
+ document.getElementById('emi').textContent=fmt(emi);
+ document.getElementById('interest').textContent=fmt(interest);
+ document.getElementById('total').textContent=fmt(total);
+
+ document.querySelectorAll('.results').forEach(x=>x.style.display='block');
+ document.getElementById('quotation').scrollIntoView({behavior:'smooth'});
+}
+
+function quotationText(){
+ const name=document.getElementById('name').value.trim();
+ const mobile=document.getElementById('mobile').value.trim();
+ const type=document.getElementById('loanType').value;
+ const P=val('amount'), annual=val('rate'), years=val('years');
+ const charges=val('loginFee')+val('insurance')+val('pf')+val('legal')+val('technical')+val('stamp')+val('other')+val('serviceFee');
+ const r=annual/12/100,n=years*12,emi=r===0?P/n:P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+ return `*MUNMUN FINANCE - LOAN QUOTATION*\\n\\nCustomer: ${name}\\nMobile: ${mobile||'-'}\\nLoan Type: ${type}\\nLoan Amount: ${fmt(P)}\\nROI: ${annual.toFixed(2)}% p.a.\\nTenure: ${years} Years\\nMonthly EMI: ${fmt(emi)}\\n\\n*Estimated Charges: ${fmt(charges)}*\\nLogin/Processing: ${fmt(val('loginFee'))}\\nInsurance: ${fmt(val('insurance'))}\\nPF/Other: ${fmt(val('pf'))}\\nLegal: ${fmt(val('legal'))}\\nTechnical: ${fmt(val('technical'))}\\nStamp/Documentation: ${fmt(val('stamp'))}\\nOther: ${fmt(val('other'))}\\nMunmun Finance Fee: ${fmt(val('serviceFee'))}\\n\\nFinal charges and approval are subject to lender policy.\\n\\n*Munmun Finance - Powered by Yash Sahu*`;
+}
+function sendWhatsApp(){ if(!document.getElementById('name').value.trim()){alert('Generate the quotation first.');return;} window.open('https://wa.me/919522501269?text='+encodeURIComponent(quotationText()),'_blank');}
+function sendCustomerWhatsApp(){
+ const m=document.getElementById('mobile').value.replace(/\\D/g,'');
+ if(!m){alert('Enter customer mobile number first.');return;}
+ const number=m.length===10?'91'+m:m;
+ window.open('https://wa.me/'+number+'?text='+encodeURIComponent(quotationText()),'_blank');
+}
+</script>
+</body>
+</html>
